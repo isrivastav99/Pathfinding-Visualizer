@@ -1,5 +1,5 @@
-var cols = 100;
-var rows = 100;
+var cols = 50;
+var rows = 50;
 var grid = new Array(rows);
 var w,h;
 var start;
@@ -14,9 +14,10 @@ var mx = [-1,0,1];
 
 
 let sel;
+let go;
 
 function setup(){
-    let canv = createCanvas(670, 670);
+    let canv = createCanvas(600, 600);
     canv.position(350,0);
 
     sel = createSelect();
@@ -24,6 +25,10 @@ function setup(){
     sel.option('A*');
     sel.option('BFS');
     sel.option('DFS');
+
+    button = createButton('Go');
+    button.position(10, 40);
+    button.mousePressed(mousePressed);
     //sel.changed(astar);
     w = width/cols;
     h = height/rows;
@@ -50,6 +55,9 @@ function setup(){
     openSet.push(start);
 
 }
+function mousePressed() {
+    redraw();
+  }
 
 function draw(){
 
@@ -63,7 +71,7 @@ function draw(){
     if(sel.value() == 'A*')
         astar();
     else if(sel.value() == 'BFS'){
-        //implement BFS
+            BFS();
     }
     else{
         //implement DFS
