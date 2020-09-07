@@ -10,7 +10,7 @@ var closedSet = [];
 
 
 var path;
-var mx = [-1,0,1];
+var mx = [0,1,-1];
 
 
 let sel;
@@ -60,6 +60,8 @@ function newMaze(){
     end.wall = false;
     openSet.push(start);
 
+   // frameRate(1);
+
     for(var i = 0;i<cols;i++){
         for(var j = 0;j<rows;j++){
             grid[i][j].show(color(255));
@@ -89,7 +91,7 @@ function draw(){
             BFS();
     }
     else{
-        //implement DFS
+        DFS();
     }
     
 }

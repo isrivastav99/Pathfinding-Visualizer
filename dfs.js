@@ -1,7 +1,9 @@
 function DFS(){
     var current = searchDFS();
+    console.log(current.i + ',' + current.j);
     printpaths(current);
 }
+var c;
 
 function removeFromSet(arr, current){
     for(var i = arr.length-1;i>=0;i--){
@@ -9,15 +11,38 @@ function removeFromSet(arr, current){
             arr.splice(i, 1);
     }
 }
+function travDFS(current){
+    /*removeFromSet(openSet, current);
+    closedSet.push(current);
+    //printpaths(current);
+    c = current;
+    if(current === end){
+        noLoop();
+        console.log("done");
+    }
+    var neighbours = current.neighbours;
+    console.log(current.i + ',' + current.j);
+        for(var i = 0;i<neighbours.length;i++){
+            var neighbour = neighbours[i];
+            if(!closedSet.includes(neighbour) && !neighbour.wall){
+                if(!openSet.includes(neighbour)){
+                    openSet.push(neighbour);
+                    neighbour.parent = current;
+                    travDFS(neighbour);
+                }
+            }
+        }*/
+
+    
+}
 function searchDFS(){
     if(openSet.length>0){ 
-        var lowestIndex = 0;
-        var current = openSet[lowestIndex];
-        if(openSet[lowestIndex] === end){
+        //var lowestIndex = 0;
+        var current = openSet.pop();
+        if(current === end){
             noLoop();
             console.log("done");
         }
-        removeFromSet(openSet, current);
         closedSet.push(current);
 
         var neighbours = current.neighbours;
@@ -38,26 +63,4 @@ function searchDFS(){
         return;
     }
     return current;
-}
-
-function printpaths(current){
-    for(var i = 0;i<closedSet.length;i++){
-        closedSet[i].show(color(255, 0,0));
-    }
-    for(var i = 0;i<openSet.length;i++){
-        openSet[i].show(color(0,255,0));
-    }
-
-    path = [];
-    var temp = current;
-    path.push(temp);
-    while(temp.parent){
-        path.push(temp.parent);
-        temp = temp.parent;
-    }
-
-
-    for(var i = 0;i<path.length;i++){
-        path[i].show(color(0,0,255));
-    }
 }
