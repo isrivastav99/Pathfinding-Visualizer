@@ -59,6 +59,12 @@ function newMaze(){
     start.wall = false;
     end.wall = false;
     openSet.push(start);
+
+    for(var i = 0;i<cols;i++){
+        for(var j = 0;j<rows;j++){
+            grid[i][j].show(color(255));
+        }
+    }
 }
 function kp() {
    // if(keyCode === ENTER){
