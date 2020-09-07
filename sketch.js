@@ -32,10 +32,16 @@ function setup(){
     //sel.changed(astar);
     w = width/cols;
     h = height/rows;
-
-    for(var i = 0;i<cols;i++)
-        grid[i] = new Array(cols);
+    newMaze();
+    reset = createButton('New Maze');
+    reset.position(10, 70);
+    reset.mousePressed(newMaze);    
     
+}
+function newMaze(){
+    for(var i = 0;i<cols;i++)
+    grid[i] = new Array(cols);
+
     for(var i = 0;i<rows;i++){
         for(var j = 0;j<cols;j++){
             grid[i][j] = new Spot(i,j);
@@ -53,7 +59,6 @@ function setup(){
     start.wall = false;
     end.wall = false;
     openSet.push(start);
-
 }
 function kp() {
    // if(keyCode === ENTER){
