@@ -1,5 +1,5 @@
-var cols = 50;
-var rows = 50;
+var cols = 40;
+var rows = 40;
 var grid = new Array(rows);
 var w,h;
 var start;
@@ -28,7 +28,7 @@ function setup(){
 
     button = createButton('Go');
     button.position(10, 40);
-    button.mousePressed(mousePressed);
+    button.mousePressed(kp);
     //sel.changed(astar);
     w = width/cols;
     h = height/rows;
@@ -55,9 +55,14 @@ function setup(){
     openSet.push(start);
 
 }
-function mousePressed() {
-    redraw();
-  }
+function kp() {
+   // if(keyCode === ENTER){
+        openSet.length = 0;
+        openSet.push(start);
+        closedSet.length = 0;
+        loop();
+    //}
+}
 
 function draw(){
 
@@ -68,8 +73,9 @@ function draw(){
             grid[i][j].show(color(255));
         }
     }
-    if(sel.value() == 'A*')
+    if(sel.value() == 'A*'){
         astar();
+    }
     else if(sel.value() == 'BFS'){
             BFS();
     }

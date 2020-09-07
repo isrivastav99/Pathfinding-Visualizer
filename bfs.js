@@ -11,9 +11,7 @@ function removeFromSet(arr, current){
 }
 
 function searchBFS(){
-    if(openSet.length>0){
-        
-        
+    if(openSet.length>0){ 
         var lowestIndex = 0;
         var current = openSet[lowestIndex];
         if(openSet[lowestIndex] === end){
@@ -28,8 +26,10 @@ function searchBFS(){
         for(var i = 0;i<neighbours.length;i++){
             var neighbour = neighbours[i];
             if(!closedSet.includes(neighbour) && !neighbour.wall){
-                openSet.push(neighbour);
-                neighbour.parent = current;
+                if(!openSet.includes(neighbour)){
+                    openSet.push(neighbour);
+                    neighbour.parent = current;
+                }
             }
         }
     }
