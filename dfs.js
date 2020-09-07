@@ -9,7 +9,6 @@ function removeFromSet(arr, current){
             arr.splice(i, 1);
     }
 }
-
 function searchDFS(){
     if(openSet.length>0){ 
         var lowestIndex = 0;
