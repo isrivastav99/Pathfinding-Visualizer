@@ -8,7 +8,7 @@ function Spot(i,j){
     this.parent = undefined;
     this.wall = false;
 
-
+    //for maze
     if(random(1) < 0.3){
         this.wall = true;
     }

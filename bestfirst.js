@@ -1,10 +1,7 @@
-function astar(){
-    var current = searchAStar();
+function bestfirst(){
+    var current = searchbf();
     printpaths(current);
 }
-
-
-
 
 function removeFromSet(arr, current){
     for(var i = arr.length-1;i>=0;i--){
@@ -21,7 +18,7 @@ function heuristic(a, b){
 }
 
 
-function searchAStar(){
+function searchbf(){
     if(openSet.length>0){
         var lowestIndex = 0;
        
